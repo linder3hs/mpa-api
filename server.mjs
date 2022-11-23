@@ -6,7 +6,7 @@ const { Client } = pkg;
 const app = express();
 
 async function connection() {
-  const client = Client({
+  const client = new Client({
     host: "dpg-cdv8jspa6gdsa666s1l0-a",
     port: 5432,
     user: "root",
