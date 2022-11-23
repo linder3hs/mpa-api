@@ -7,7 +7,7 @@ const app = express();
 
 async function connection() {
   const client = new Client({
-    host: "dpg-cdv8jspa6gdsa666s1l0-a",
+    host: "dpg-cdv8jspa6gdsa666s1l0-a.oregon-postgres.render.com",
     port: 5432,
     user: "root",
     password: "M0vVsbMs3ZHUda5zoyEew3YcdEFzyEkV",
