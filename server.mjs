@@ -1,5 +1,7 @@
 import express from "express";
-import { Client } from "pg";
+import pkg from "pg";
+
+const { Client } = pkg;
 
 const app = express();
 
