@@ -22,10 +22,10 @@ app.get("/", async (req, res) => {
   const client = await connection();
 
   try {
-    const res = await client.query(text, values);
-    console.log(res.rows[0]);
+    const result = await client.query(text, values);
+
     res.json({
-      message: res.rows[0],
+      message: result.rows[0],
     });
     // { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
   } catch (err) {
@@ -42,8 +42,8 @@ app.get("/users", async (req, res) => {
   const client = await connection();
 
   // promise
-  const res = await client.query(query);
-  const data = res.rows[0];
+  const result = await client.query(query);
+  const data = result.rows[0];
 
   res.json({
     message: data,
