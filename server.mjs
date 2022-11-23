@@ -1,6 +1,11 @@
-import { createServer } from 'http';
+import express from "express";
 
-createServer((req, res) => {
-  res.write('Hello World!');
-  res.end();
-}).listen(process.env.PORT);
+const app = express();
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "Funciona",
+  });
+});
+
+app.listen(process.env.PORT || 6003);
