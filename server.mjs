@@ -8,4 +8,10 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/users", (req, res) => {
+  res.json({
+    message: "Funciona con usuarios",
+  });
+});
+
 app.listen(process.env.PORT || 6003);
