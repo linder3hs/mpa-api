@@ -1,25 +1,26 @@
 import express from "express";
 import pkg from "pg";
 
-const { Client } = pkg;
+const { Client, Pool } = pkg;
 
 const app = express();
 
 async function connection() {
-  const client = new Client({
-    host: "dpg-cdv8jspa6gdsa666s1l0-a.oregon-postgres.render.com",
-    port: 5432,
-    user: "root",
-    password: "M0vVsbMs3ZHUda5zoyEew3YcdEFzyEkV",
-    database: "codigo",
+  const client = new Pool({
+    host: "containers-us-west-97.railway.app",
+    port: 6273,
+    user: "postgres",
+    password: "jhUzH9bKC9c7gZiP8Gno",
+    database: "railway",
   });
 
   return await client.connect();
 }
 
 app.get("/", async (req, res) => {
-  const text = "INSERT INTO users(name, email) VALUES($1, $2) RETURNING *";
-  const values = ["brianc", "brian.m.carlson@gmail.com"];
+  const text =
+    "INSERT INTO users(id, name, email) VALUES($1, $2, $3) RETURNING *";
+  const values = [1, "brianc", "brian.m.carlson@gmail.com"];
 
   const client = await connection();
 
@@ -38,7 +39,7 @@ app.get("/", async (req, res) => {
 app.get("/users", async (req, res) => {
   const query = {
     name: "users",
-    text: "SELECT * FROM user WHERE",
+    text: "SELECT * FROM users",
   };
 
   const client = await connection();
