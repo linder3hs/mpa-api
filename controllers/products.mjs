@@ -4,7 +4,7 @@ import { hashString, compareString } from "../utils/strings.mjs";
 export const findAll = async (req, res) => {
 	const query = {
 		name: "products",
-		text: "SELECT * FROM product",
+		text: "SELECT p.*, u.name as user_name FROM product p INNER JOIN users u on p.user_id = u.id",
 	};
 
 	const client = await connection();
