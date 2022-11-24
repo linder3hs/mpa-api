@@ -1,5 +1,4 @@
 import { connection } from "../db/index.mjs";
-import { hashString, compareString } from "../utils/strings.mjs";
 
 export const findAll = async (req, res) => {
 	const query = {
@@ -36,7 +35,7 @@ export const add = async (req, res) => {
 	} catch (err) {
 		res.status(500).json({
 			ok: false,
-			message: err,
+			message: err.message,
 		});
 	}
 };
