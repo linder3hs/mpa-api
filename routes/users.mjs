@@ -1,10 +1,10 @@
 import { Router } from "express";
 import * as Controller from "../controllers/users.mjs";
 
-const userRouter = Router();
+const usersRouter = Router();
 
-userRouter.get("/", Controller.findAll);
-userRouter.post("/signup", Controller.signUp);
-userRouter.post("/login", Controller.login);
+usersRouter.get("/", Controller.findAll);
+usersRouter.post("/signup", Controller.signUp);
+usersRouter.post("/login", Controller.login);
 
-export default userRouter;
+export default usersRouter;
