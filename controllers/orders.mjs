@@ -44,7 +44,7 @@ export const add = async (req, res) => {
 	}
 
 	const text =
-		"INSERT INTO order(user_id, created_at) VALUES($1, $2) RETURNING *";
+		'INSERT INTO "order"(user_id, created_at) VALUES($1, $2) RETURNING *';
 	const values = [user_id, created_at];
 
 	const client = await connection();
