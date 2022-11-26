@@ -52,17 +52,19 @@ export const add = async (req, res) => {
 	try {
 		const result = await client.query(text, values);
 		// Insert order_detail:
-		order_detail.map(async (order_detail) => {
-			const t =
-				"INSERT INTO order_detail(order_id, product_id, quantity, unit_price) VALUES($1, $2, $3, $4) RETURNING *";
-			const v = [
-				result.rows[0].id,
-				order_detail.product_id,
-				order_detail.quantity,
-				order_detail.price,
-			];
-			const r = await client.query(text, values);
-		});
+		if (result.rows.length > 0) {
+			order_detail.map(async (order_detail) => {
+				const t =
+					"INSERT INTO order_detail(order_id, product_id, quantity, unit_price) VALUES($1, $2, $3, $4) RETURNING *";
+				const v = [
+					result.rows[0].id,
+					order_detail.product_id,
+					order_detail.quantity,
+					order_detail.price,
+				];
+				const r = await client.query(t, v);
+			});
+		}
 
 		res.json({
 			ok: true,
